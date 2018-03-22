@@ -2,7 +2,7 @@
   "name": "argentum88/owlet",
   "type": "library",
   "require": {
-    "php": ">=5.5"
+    "php": ">=5.4"
   },
   "autoload": {
     "psr-4": {
