@@ -4,8 +4,6 @@ namespace Ueef\Owlet {
 
     use Ueef\Owlet\Interfaces\ViewInterface;
     use Ueef\Owlet\Interfaces\EngineInterface;
-    use Ueef\Assignable\Traits\AssignableTrait;
-    use Ueef\Assignable\Interfaces\AssignableInterface;
 
     class View implements ViewInterface
     {
@@ -29,7 +27,13 @@ namespace Ueef\Owlet {
             $this->engines = $engines;
         }
 
-        public function render($views, array $args = [], ?string $content = null): ?string
+        /**
+         * @param string $views
+         * @param array $args
+         * @param null|string $content
+         * @return null|string
+         */
+        public function render($views, array $args = [], $content = null)
         {
             if (!is_array($views)) {
                 $views = [$views];
@@ -42,7 +46,13 @@ namespace Ueef\Owlet {
             return $content;
         }
 
-        private function renderView($view, array &$args, ?string $content = null): ?string
+        /**
+         * @param string $view
+         * @param array $args
+         * @param null|string $content
+         * @return null|string
+         */
+        private function renderView($view, array &$args, $content = null)
         {
             foreach ($this->resolvePaths($view) as $path) {
                 foreach ($this->engines as $suffix => $engine) {
@@ -58,7 +68,11 @@ namespace Ueef\Owlet {
             return $content;
         }
 
-        private function resolvePaths($paths): array
+        /**
+         * @param $paths
+         * @return array
+         */
+        private function resolvePaths($paths)
         {
             if (!is_array($paths)) {
                 $paths = [$paths];
@@ -76,12 +90,20 @@ namespace Ueef\Owlet {
             return $resolved;
         }
 
-        private function correctDirPath(string $path)
+        /**
+         * @param string $path
+         * @return string
+         */
+        private function correctDirPath($path)
         {
             return rtrim($path, '/');
         }
 
-        private function correctViewPath(string $path)
+        /**
+         * @param string $path
+         * @return string
+         */
+        private function correctViewPath($path)
         {
             return '/' . trim($path, '/');
         }

@@ -7,7 +7,14 @@ namespace Ueef\Owlet\Engine {
 
     class Php implements EngineInterface
     {
-        public function render(ViewInterface $context, $path, array &$args, ?string $content = null): ?string
+        /**
+         * @param ViewInterface $context
+         * @param string $path
+         * @param array $args
+         * @param null|string $content
+         * @return null|string
+         */
+        public function render(ViewInterface $context, $path, array &$args, $content = null)
         {
             $renderer = function () use ($path, $content, &$args) {
                 extract($args, EXTR_OVERWRITE | EXTR_REFS);

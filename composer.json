@@ -1,8 +1,8 @@
 {
-  "name": "ueef/owlet",
+  "name": "argentum88/owlet",
   "type": "library",
   "require": {
-    "php": ">=7.1"
+    "php": ">=5.5"
   },
   "autoload": {
     "psr-4": {
